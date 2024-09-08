@@ -1,7 +1,9 @@
 //action_select_screen.dart
 import 'package:flutter/material.dart';
-import 'upload_video_screen.dart';  // 업로드 비디오 화면 임포트
-import 'live_stream_screen.dart';  // 라이브 스트리밍 화면 임포트
+import 'upload_video_screen.dart';
+import 'live_stream_screen.dart';
+import 'stream_category_screen.dart';
+import '../model/streaming_model.dart';
 
 class ActionSelectionScreen extends StatelessWidget {
   @override
@@ -18,10 +20,10 @@ class ActionSelectionScreen extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               onPressed: () {
-                // LiveStreamScreen을 LiveViewPage로 변경
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LiveViewPage()),
+                // NewStreamingModal 모달을 하단에 띄움
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) => NewStreamingModal(),
                 );
               },
               style: ElevatedButton.styleFrom(

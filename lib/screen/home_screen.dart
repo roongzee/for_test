@@ -50,22 +50,13 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: _buildBody(filteredVideos), // 현재 선택된 탭에 따라 다른 화면을 표시
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final Video? uploadedVideo = await Navigator.push(
+        onPressed: () {
+          Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => UploadVideoScreen(
-                onVideoUploaded: (video) {
-                  // 업로드 후 비디오를 반환하여 HomeScreen에서 처리
-                  Navigator.pop(context, video);
-                },
-              ),
+              builder: (context) => ActionSelectionScreen(),
             ),
           );
-
-          if (uploadedVideo != null) {
-            _addVideo(uploadedVideo);
-          }
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.pink,

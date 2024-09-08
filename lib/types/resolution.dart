@@ -1,37 +1,37 @@
 import 'package:apivideo_live_stream/apivideo_live_stream.dart';
 
-// Resolution을 int로 변환하는 확장 함수 추가
-extension ResolutionToInt on Resolution {
-  int toInt() {
-    return Resolution.values.indexOf(this);  // Resolution을 인덱스로 변환
-  }
-}
-
-// Resolution을 문자열로 변환하는 확장 함수 (기존)
-extension ResolutionExtension on Resolution {
-  String toPrettyString() {
-    switch (this) {
-      case Resolution.RESOLUTION_240:
-        return "352x240";
-      case Resolution.RESOLUTION_360:
-        return "640x360";
-      case Resolution.RESOLUTION_480:
-        return "858x480";
-      case Resolution.RESOLUTION_720:
-        return "1280x720";
-      case Resolution.RESOLUTION_1080:
-        return "1920x1080";
-      default:
-        return "1280x720";
-    }
-  }
-}
-
-// Resolution을 Map<int, String>으로 변환하는 함수
-Map<int, String> getResolutionsMap() {
-  Map<int, String> map = {};
+Map<Resolution, String> getResolutionsMap() {
+  Map<Resolution, String> map = {};
   for (final res in Resolution.values) {
-    map[res.toInt()] = res.toPrettyString();  // Resolution을 int로 변환하여 맵에 저장
+    map[res] = res.toPrettyString();
   }
   return map;
 }
+
+extension ResolutionExtension on Resolution {
+  String toPrettyString() {
+    var result = "";
+    switch (this) {
+      case Resolution.RESOLUTION_240:
+        result = "352x240";
+        break;
+      case Resolution.RESOLUTION_360:
+        result = "640x360";
+        break;
+      case Resolution.RESOLUTION_480:
+        result = "858x480";
+        break;
+      case Resolution.RESOLUTION_720:
+        result = "1280x720";
+        break;
+      case Resolution.RESOLUTION_1080:
+        result = "1920x1080";
+        break;
+      default:
+        result = "1280x720";
+        break;
+    }
+    return result;
+  }
+}
+

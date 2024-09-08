@@ -1,7 +1,7 @@
 import 'dart:core';
 
 import 'package:apivideo_live_stream/apivideo_live_stream.dart';
-import 'sample_rate.dart';
+import './sample_rate.dart';
 import 'channel.dart';
 import 'resolution.dart';
 
@@ -25,12 +25,14 @@ String bitrateToPrettyString(int bitrate) {
   return "${bitrate / 1000} Kbps";
 }
 
+
 class Params {
-  final VideoConfig video = VideoConfig.withDefaultBitrate(resolution: Resolution.RESOLUTION_480);
+  final VideoConfig video =
+  VideoConfig.withDefaultBitrate(resolution: Resolution.RESOLUTION_480);
   final AudioConfig audio = AudioConfig();
 
-  String rtmpUrl = "rtmp://broadcast.api.video/s/";
-  String streamKey = "";
+  String rtmpUrl = "rtmp://172.22.65.35:1935/live/";
+  String streamKey = "test";
 
   String getResolutionToString() {
     return video.resolution.toPrettyString();
